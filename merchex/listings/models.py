@@ -16,7 +16,9 @@ class Band(models.Model):
         )
         active = models.fields.BooleanField(default=True)
         official_homepage = models.fields.URLField(null=True, blank=True)
-        reccord_company = models.fields.CharField(max_length=100)
+        record_company = models.fields.CharField(max_length=100)
+        hometown = models.fields.CharField(max_length=100)
+
 
         def __str__(self):
             return f'{self.name}'
