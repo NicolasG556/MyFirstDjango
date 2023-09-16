@@ -27,9 +27,10 @@ class Listing(models.Model):
             POSTERS = 'p'
             MISCELLANEOUS = 'm'
         title = models.fields.CharField(max_length=100)
-        description = models.fields.TextField(max_length=1000)
+        description = models.fields.TextField(max_length=1000, default="")
         sold = models.fields.BooleanField(default=False)
         year = models.fields.IntegerField(
-            validators=[MinValueValidator(1900), MaxValueValidator(2021)], null=True
+            validators=[MinValueValidator(1900), MaxValueValidator(2021)], null=True, default=2000
         )
         type = models.fields.CharField(choices=Type.choices, max_length=3)
+        band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)
