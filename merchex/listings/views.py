@@ -57,6 +57,22 @@ def band_update(request, id):
                   {'form': form})
 
 
+def band_delete(request, id):
+    band = Band.objects.get(id=id)
+
+    if request.method == 'POST':
+        # supprimer le groupe de la base de données
+        band.delete()
+        # rediriger vers la liste des groupes
+        return redirect('band-list')
+
+        # pas besoin de « else » ici. Si c'est une demande GET, continuez simplement
+
+    return render(request,
+                  'listings/band_delete.html',
+                  {'band': band})
+
+
 def about(request):
     return render(request,
                   'listings/about.html')
@@ -110,6 +126,22 @@ def listing_update(request, id):
     return render(request,
                   'listings/listing_update.html',
                   {'form': form})
+
+
+def listing_delete(request, id):
+    listing = Listing.objects.get(id=id)
+
+    if request.method == 'POST':
+        # supprimer l'annonce de la base de données
+        listing.delete()
+        # rediriger vers la liste des annonces
+        return redirect('listing-list')
+
+        # pas besoin de « else » ici. Si c'est une demande GET, continuez simplement
+
+    return render(request,
+                  'listings/listing_delete.html',
+                  {'listing': listing})
 
 
 def contact(request):
