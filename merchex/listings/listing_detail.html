@@ -1,16 +1,18 @@
-
 {% extends 'listings/base.html' %}
 
 {% block content %}
- <h2>{{ listing.name }}</h2>
+<h2>{{ listing.name }}</h2>
 
-  <ul>
-      <li>Titre : {{ listing.title }}</li>
+<ul>
+    <li>Titre : {{ listing.title }}</li>
     <li>Description : {{ listing.description }}</li>
-      <li>Vendu : {{ listing.sold|yesno }}</li>
-   <li>Type : {{ listing.get_type_display }}</li>
-  </ul>
+    <li>Vendu : {{ listing.sold|yesno }}</li>
+    <li>Type : {{ listing.get_type_display }}</li>
+</ul>
 
-    <a href="{% url 'listing-list' %}">Retour à tous les listings</a>
+<p>
+<a href="{% url 'listing-update' listing.id %}">Modifier cette annonce</a>
+</p>
+<a href="{% url 'listing-list' %}">Retour à tous les listings</a>
 
 {% endblock %}
